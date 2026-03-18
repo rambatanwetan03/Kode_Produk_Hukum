@@ -139,12 +139,12 @@
     </footer>
 
     <script>
-        // Data Master Klasifikasi
+        // Data Master Klasifikasi - LENGKAP A-L
         const masterKlasifikasi = [
             { cat: "A. PERATURAN DESA (PD)", items: [
                 { code: "PD-APB", desc: "APBDes" }, { code: "PD-RKP", desc: "RKPDes" }, { code: "PD-RPJM", desc: "RPJMDes" },
                 { code: "PD-PUNG", desc: "Pungutan Desa" }, { code: "PD-ASET", desc: "Pengelolaan Aset" }, { code: "PD-TKDES", desc: "Tanah Kas Desa" },
-                { code: "PD-BUM", desc: "BUMDes" }, { code: "PD-SOTK", desc: "SOTK" }, { code: "PD-KEWEN", desc: "Kewenangan Desa" },
+                { code: "PD-BUM", desc: "BUMDes" }, { code: "PD-SOTK", desc: "Susunan Organisasi & Tata Kerja" }, { code: "PD-KEWEN", desc: "Kewenangan Desa" },
                 { code: "PD-ADAT", desc: "Adat & Kearifan Lokal" }, { code: "PD-LAIN", desc: "Lain-lain" }
             ]},
             { cat: "B. PERATURAN KEPALA DESA (PK)", items: [
@@ -211,6 +211,15 @@
             populateKlasifikasi();
             checkAuthStatus();
             renderTable();
+            
+            const loginInputs = ['username', 'password'];
+            loginInputs.forEach(id => {
+                document.getElementById(id).addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleLogin();
+                    }
+                });
+            });
         };
 
         // --- AUTH LOGIC ---
@@ -246,17 +255,19 @@
                 logoutBtn.classList.add('hidden');
                 toggleLoginBtn.classList.remove('hidden');
             }
-            renderTable(); // Re-render to show/hide edit buttons
+            renderTable();
         }
 
         function handleLogin() {
-            const u = document.getElementById('username').value;
-            const p = document.getElementById('password').value;
+            const u = document.getElementById('username').value.toLowerCase();
+            const p = document.getElementById('password').value.toLowerCase();
             if (u === 'kliwon03' && p === 'ramwet03') {
                 isLoggedIn = true;
                 localStorage.setItem('isLoggedIn', 'true');
                 document.getElementById('loginError').classList.add('hidden');
                 checkAuthStatus();
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
             } else {
                 document.getElementById('loginError').classList.remove('hidden');
             }
@@ -287,7 +298,6 @@
         function checkDuplicateNo(el) {
             const val = parseInt(el.value);
             if (!val) return;
-            // Check excluding currently edited ID
             const duplicate = appData.find(d => d.noUrut === val && d.id !== editId);
             if (duplicate) {
                 alert(`Peringatan: Nomor Urut ${val} sudah digunakan oleh "${duplicate.keterangan}". Input akan dihapus.`);
@@ -306,11 +316,9 @@
             }
 
             if (editId) {
-                // Update
                 const index = appData.findIndex(d => d.id === editId);
                 appData[index] = { ...appData[index], noUrut, klasifikasi, keterangan };
             } else {
-                // New
                 const newData = {
                     id: Date.now(),
                     noUrut,
@@ -321,9 +329,7 @@
                 appData.push(newData);
             }
 
-            // Sort by No Urut
             appData.sort((a, b) => a.noUrut - b.noUrut);
-            
             localStorage.setItem('desa_docs', JSON.stringify(appData));
             resetForm();
             renderTable();
@@ -397,23 +403,18 @@
             }
         }
 
-        // --- EXPORT LOGIC ---
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            
             doc.text("Laporan Klasifikasi Dokumen Desa", 14, 15);
             doc.setFontSize(10);
             doc.text(`Dicetak pada: ${new Date().toLocaleString('id-ID')}`, 14, 22);
-
             const tableRows = appData.map((d, index) => [index + 1, d.noUrut, d.klasifikasi, d.keterangan]);
-            
             doc.autoTable({
                 startY: 30,
                 head: [['No.', 'Kode', 'Klasifikasi/Label', 'Keterangan']],
                 body: tableRows,
             });
-
             doc.save("Data_Dokumen_Desa.pdf");
         }
 
@@ -449,7 +450,6 @@
             const blob = new Blob(['\ufeff', content], { type: 'application/msword' });
             saveAs(blob, 'Data_Dokumen_Desa.doc');
         }
-
     </script>
 </body>
 </html>
