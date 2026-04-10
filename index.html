@@ -158,41 +158,90 @@
 
     <script>
         // Data Master Klasifikasi - LENGKAP A-N
-        const masterKlasifikasi = [
+        // Data Master Klasifikasi - LENGKAP A-V (FINAL SESUAI DATA ANDA)
+const masterKlasifikasi = [
+    { cat: "A. PERATURAN DESA (PD)", items: [
+        { code: "PD-APB", desc: "APBDes" }, { code: "PD-RKP", desc: "RKPDes" }, { code: "PD-RPJM", desc: "RPJMDes" },
+        { code: "PD-PUNG", desc: "Pungutan Desa" }, { code: "PD-ASET", desc: "Pengelolaan Aset" }, { code: "PD-TKDES", desc: "Tanah Kas Desa" },
+        { code: "PD-BUM", desc: "BUMDes" }, { code: "PD-SOTK", desc: "Susunan Organisasi & Tata Kerja" },
+        { code: "PD-KEWEN", desc: "Kewenangan Desa" }, { code: "PD-ADAT", desc: "Adat & Kearifan Lokal" },
+        { code: "PD-LING", desc: "Lingkungan Hidup" }, { code: "PD-TRANS", desc: "Transparansi Publik" },
+        { code: "PD-KERJASAMA", desc: "Kerjasama Desa" }, { code: "PD-PELAYANAN", desc: "Pelayanan Publik" },
+        { code: "PD-KEAMANAN", desc: "Ketertiban & Keamanan" }, { code: "PD-LAIN", desc: "Lain-lain" }
+    ]},
+    { cat: "B. PERATURAN KEPALA DESA (PK)", items: [
+        { code: "PK-PJAB", desc: "Penjabaran APBDes" }, { code: "PK-TEKNIS", desc: "Petunjuk Teknis" },
+        { code: "PK-TUPOKSI", desc: "Tugas Pokok & Fungsi" }, { code: "PK-KEU", desc: "Pengelolaan Keuangan" },
+        { code: "PK-ASET", desc: "Pengelolaan Aset" }, { code: "PK-ADMIN", desc: "Administrasi Pemerintahan" },
+        { code: "PK-PENGADAAN", desc: "Pengadaan Barang/Jasa" }, { code: "PK-SOP", desc: "Standar Operasional Prosedur" },
+        { code: "PK-ABSEN", desc: "Sistem Absensi" }, { code: "PK-DISIPLIN", desc: "Disiplin Perangkat" },
+        { code: "PK-LAYANAN", desc: "Standar Pelayanan" }, { code: "PK-LAIN", desc: "Lain-lain" }
+    ]},
+    { cat: "C. KEPUTUSAN KEPALA DESA (KPTS)", items: [
+        { code: "KPTS-TPK", desc: "Tim Pelaksana Kegiatan" }, { code: "KPTS-PAN", desc: "Panitia" },
+        { code: "KPTS-PKD", desc: "Perangkat Desa" }, { code: "KPTS-HON", desc: "Tenaga Honorer" },
+        { code: "KPTS-BLT", desc: "BLT Desa" }, { code: "KPTS-BANSOS", desc: "Bantuan Sosial" },
+        { code: "KPTS-TIM", desc: "Tim Verifikasi" }, { code: "KPTS-KEU", desc: "Keuangan" },
+        { code: "KPTS-PA", desc: "Penetapan Penerima Bantuan" }, { code: "KPTS-PJ", desc: "Penunjukan Penanggung Jawab" },
+        { code: "KPTS-KEG", desc: "Penanggung Jawab Kegiatan" }, { code: "KPTS-SATGAS", desc: "Satuan Tugas" },
+        { code: "KPTS-OPERATOR", desc: "Operator Sistem" }, { code: "KPTS-REL", desc: "Relawan Desa" },
+        { code: "KPTS-PENDATA", desc: "Petugas Pendataan" }, { code: "KPTS-KEAMANAN", desc: "Linmas / Keamanan" },
+        { code: "KPTS-KESEHATAN", desc: "Kader Kesehatan" }, { code: "KPTS-PENDIDIKAN", desc: "Kader Pendidikan" },
+        { code: "KPTS-LAIN", desc: "Lain-lain" }
+    ]},
+    { cat: "D. INSTRUKSI KEPALA DESA (IN)", items: [
+        { code: "IN-DIS", desc: "Disiplin" }, { code: "IN-KEB", desc: "Kebijakan Internal" },
+        { code: "IN-DAR", desc: "Keadaan Darurat" }, { code: "IN-KEG", desc: "Pelaksanaan Kegiatan" },
+        { code: "IN-LAYANAN", desc: "Pelayanan Masyarakat" }, { code: "IN-KEAMANAN", desc: "Ketertiban" },
+        { code: "IN-LAIN", desc: "Lain-lain" }
+    ]},
+    { cat: "E. SURAT EDARAN (SE)", items: [
+        { code: "SE-UM", desc: "Umum" }, { code: "SE-KEU", desc: "Keuangan" },
+        { code: "SE-DIS", desc: "Disiplin" }, { code: "SE-PEM", desc: "Pemerintahan" },
+        { code: "SE-LING", desc: "Lingkungan" }, { code: "SE-KEG", desc: "Kegiatan" },
+        { code: "SE-KESEHATAN", desc: "Kesehatan" }, { code: "SE-PENDIDIKAN", desc: "Pendidikan" },
+        { code: "SE-LAIN", desc: "Lain-lain" }
+    ]},
+    { cat: "F. BERITA ACARA (BA)", items: [
+        { code: "BA-MUS", desc: "Musyawarah" }, { code: "BA-RKP", desc: "Penetapan RKPDes" },
+        { code: "BA-APB", desc: "Penetapan APBDes" }, { code: "BA-SER", desc: "Serah Terima" },
+        { code: "BA-VER", desc: "Verifikasi" }, { code: "BA-MONEV", desc: "Monitoring & Evaluasi" },
+        { code: "BA-HPH", desc: "Hasil Pekerjaan" }, { code: "BA-RAPAT", desc: "Rapat Internal" },
+        { code: "BA-KLAR", desc: "Klarifikasi" }, { code: "BA-PENGADAAN", desc: "Pengadaan Barang/Jasa" },
+        { code: "BA-PEMILIHAN", desc: "Pemilihan / Seleksi" }, { code: "BA-PENETAPAN", desc: "Penetapan" },
+        { code: "BA-LAIN", desc: "Lain-lain" }
+    ]},
+    { cat: "G. SURAT (SR)", items: [
+        { code: "SR-MAS", desc: "Surat Masuk" }, { code: "SR-KEL", desc: "Surat Keluar" },
+        { code: "SR-UND", desc: "Undangan" }, { code: "SR-KET", desc: "Surat Keterangan" },
+        { code: "SR-REK", desc: "Rekomendasi" }, { code: "SR-DOM", desc: "Domisili" },
+        { code: "SR-USAHA", desc: "Keterangan Usaha" }, { code: "SR-TANAH", desc: "Keterangan Tanah" },
+        { code: "SR-SKCK", desc: "Pengantar SKCK" }, { code: "SR-NIKAH", desc: "Pengantar Nikah" },
+        { code: "SR-AHLIWARIS", desc: "Keterangan Ahli Waris" },
+        { code: "SR-TIDAKMAMPU", desc: "Surat Tidak Mampu" },
+        { code: "SR-KELAHIRAN", desc: "Keterangan Kelahiran" },
+        { code: "SR-KEMATIAN", desc: "Keterangan Kematian" },
+        { code: "SR-PINDAH", desc: "Pindah Datang" },
+        { code: "SR-LAIN", desc: "Lain-lain" }
+    ]},
 
-/* ================= A - N (SUDAH ADA) ================= */
-
-/* === LANJUTAN BARU === */
-
-/* O. PEMERINTAHAN DESA */
-{
-    cat: "O. PEMERINTAHAN DESA (PEM)",
-    items: [
+    // LANJUTAN BARU (O - V)
+    { cat: "O. PEMERINTAHAN DESA (PEM)", items: [
         { code: "PEM-KEPALA", desc: "Administrasi Kepala Desa" },
         { code: "PEM-BPD", desc: "Badan Permusyawaratan Desa" },
         { code: "PEM-KEPUTUSAN", desc: "Kebijakan Pemerintahan" },
         { code: "PEM-LAPORAN", desc: "LPPD" },
         { code: "PEM-PROFIL", desc: "Profil Pemerintahan" },
         { code: "PEM-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* P. BPD */
-{
-    cat: "P. BPD (BPD)",
-    items: [
+    ]},
+    { cat: "P. BPD (BPD)", items: [
         { code: "BPD-RAPAT", desc: "Rapat BPD" },
         { code: "BPD-KEPUTUSAN", desc: "Keputusan BPD" },
         { code: "BPD-PENGAWASAN", desc: "Pengawasan" },
         { code: "BPD-ASPIRASI", desc: "Aspirasi Masyarakat" },
         { code: "BPD-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* Q. KEPENDUDUKAN */
-{
-    cat: "Q. KEPENDUDUKAN (KPD)",
-    items: [
+    ]},
+    { cat: "Q. KEPENDUDUKAN (KPD)", items: [
         { code: "KPD-KK", desc: "Kartu Keluarga" },
         { code: "KPD-KTP", desc: "KTP" },
         { code: "KPD-NIK", desc: "Data NIK" },
@@ -200,67 +249,43 @@
         { code: "KPD-PENDUDUK", desc: "Data Penduduk" },
         { code: "KPD-DATA", desc: "Database Kependudukan" },
         { code: "KPD-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* R. PAJAK */
-{
-    cat: "R. PAJAK & PBB (PJK)",
-    items: [
+    ]},
+    { cat: "R. PAJAK & PBB (PJK)", items: [
         { code: "PJK-PBB", desc: "Pajak Bumi Bangunan" },
         { code: "PJK-RETRIBUSI", desc: "Retribusi" },
         { code: "PJK-TAGIHAN", desc: "Penagihan" },
         { code: "PJK-SETOR", desc: "Setoran" },
         { code: "PJK-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* S. KERJASAMA */
-{
-    cat: "S. KERJASAMA (KSM)",
-    items: [
+    ]},
+    { cat: "S. KERJASAMA (KSM)", items: [
         { code: "KSM-MOU", desc: "MoU" },
         { code: "KSM-PERJANJIAN", desc: "Perjanjian" },
         { code: "KSM-PIHAK3", desc: "Pihak Ketiga" },
         { code: "KSM-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* T. BUMDES */
-{
-    cat: "T. BUMDES (BUM)",
-    items: [
+    ]},
+    { cat: "T. BUMDES (BUM)", items: [
         { code: "BUM-PENDIRIAN", desc: "Pendirian" },
         { code: "BUM-PENGELOLA", desc: "Pengurus" },
         { code: "BUM-LAPORAN", desc: "Laporan" },
         { code: "BUM-USAHA", desc: "Unit Usaha" },
         { code: "BUM-KEU", desc: "Keuangan" },
         { code: "BUM-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* U. AUDIT */
-{
-    cat: "U. PENGAWASAN & AUDIT (AUD)",
-    items: [
+    ]},
+    { cat: "U. PENGAWASAN & AUDIT (AUD)", items: [
         { code: "AUD-INSPEKTORAT", desc: "Pemeriksaan Inspektorat" },
         { code: "AUD-BPK", desc: "Audit BPK" },
         { code: "AUD-MONEV", desc: "Monitoring Evaluasi" },
         { code: "AUD-TEMUAN", desc: "Temuan & Tindak Lanjut" },
         { code: "AUD-LAIN", desc: "Lain-lain" }
-    ]
-},
-
-/* V. BENCANA */
-{
-    cat: "V. BENCANA & DARURAT (BDN)",
-    items: [
+    ]},
+    { cat: "V. BENCANA & DARURAT (BDN)", items: [
         { code: "BDN-BENCANA", desc: "Data Bencana" },
         { code: "BDN-BANTUAN", desc: "Bantuan" },
         { code: "BDN-TANGGAP", desc: "Tanggap Darurat" },
         { code: "BDN-LOGISTIK", desc: "Logistik" },
         { code: "BDN-LAIN", desc: "Lain-lain" }
-    ]
+    
+];
 }
 
 ];
