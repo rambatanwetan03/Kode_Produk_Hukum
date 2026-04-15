@@ -297,7 +297,6 @@
                 }
             });
 
-            // Handler Enter Key untuk Login
             const loginInputs = ['username', 'password'];
             loginInputs.forEach(id => {
                 document.getElementById(id).addEventListener('keypress', (e) => {
@@ -395,17 +394,14 @@
         }
 
         function handleLogin() {
-            // Trim whitespace untuk mencegah error typo spasi
             const u = document.getElementById('username').value.trim();
             const p = document.getElementById('password').value.trim();
             
-            // Validasi Kredensial (Case Sensitive Check)
             if (u === 'kliwon03' && p === 'ramwet03') {
                 isLoggedIn = true;
                 localStorage.setItem('isLoggedIn', 'true');
                 document.getElementById('loginError').classList.add('hidden');
                 checkAuthStatus();
-                // Reset fields
                 document.getElementById('username').value = '';
                 document.getElementById('password').value = '';
             } else {
